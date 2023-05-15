@@ -1,0 +1,11 @@
+.side-panel{
+    background:#0000ff;
+    width: 10vw;
+    height:100vh;
+    position:fixed;
+}
+
+
+.side-panel a{
+    float:left;
+}

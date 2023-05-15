@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="home.css" />
+
+    <style>
+      body {
+        font: 20px "Candara";
+      }
+
+      .project-name {
+        top: 0;
+        position: fixed;
+        z-index: 10;
+        background-color: aliceblue;
+        height: 95px;
+        width: 100%;
+      }
+      .project-name h1 {
+        /* float: left; */
+        left: 3vw;
+        position: absolute;
+        z-index: 19;
+        /* border: 2px solid red;  */
+        top: 50%;
+        transform: translate(0, -100%);
+      }
+      .project-name button {
+        background-color: #f2f2f2;
+        right: 3vw;
+        position: absolute;
+        /* border: 2px solid red; */
+        font: 20px "Candara";
+        top: 50%;
+      }
+
+      .side-panel {
+        background: aliceblue;
+        width: 150px;
+        height: 100vh;
+        top: 100px;
+        position: fixed;
+        padding: 10px;
+        padding-top: 25px;
+      }
+
+      .side-panel a {
+        float: left;
+        margin: 5px;
+        text-decoration: none;
+        color: black;
+      }
+
+      .main {
+        position: fixed;
+        top: 100px;
+        /* position: absolute; */
+        width: 86vw;
+        left: 180px;
+        overflow-x:scroll;
+        /* border: 2px solid red; */
+      }
+
+      table {
+        width: 150%;
+        border-collapse: collapse;
+        table-layout: fixed;
+        position: relative;
+        /* left:12vw; */
+        background-color: white;
+        z-index: 1;
+        {% comment %} overflow-x:scroll; {% endcomment %}
+      }
+
+      thead th {
+        {% comment %} overflow-x: scroll; {% endcomment %}
+        {% comment %} width:auto; {% endcomment %}
+        position: sticky;
+        top: 100px;
+        background-color: #f2f2f2;
+        min-width:max-content;
+        
+      }
+
+      tbody {
+        height: calc(100vh - 200px);
+        /* 40px is the height of the header row */
+        display: block;
+        overflow-y: scroll;
+        {% comment %} overflow-x:scroll; {% endcomment %}
+      }
+
+      th, td {
+        {% comment %} width:auto; {% endcomment %}
+        padding: 8px;
+        text-align: left;
+        border: 1px solid #ddd;
+        word-wrap: break-word;
+    {% comment %} word-break: break-all; {% endcomment %}
+        {% comment %} border-bottom: 1px solid #ddd; {% endcomment %}
+      }
+
+      table tr {
+        display: table;
+        width: 100%;
+        table-layout: fixed;
+        text-align: left;    
+      }
+      
+      .modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+  max-width: 500px;
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+      {% comment %} table tr th:nth-child(3) {
+        column-width: 100px; color:red;
+      } {% endcomment %}
+
+    </style>
+<script>
+    function addSkills(){
+var a=10;
+
+    }
+
+
+    // Get the modal element
+var modal = document.getElementById("modal");
+
+// Get the button that opens the modal
+var openModalBtn = document.getElementById("openModalBtn");
+
+// Get the close button element
+var closeBtn = document.getElementsByClassName("close")[0];
+
+// Open the modal when the button is clicked
+openModalBtn.addEventListener("click", function() {
+  modal.style.display = "block";
+});
+
+// Close the modal when the close button is clicked
+closeBtn.addEventListener("click", function() {
+  modal.style.display = "none";
+});
+
+// Close the modal when the user clicks outside of it
+window.addEventListener("click", function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+});
+
+// Handle form submission
+var skillsForm = document.getElementById("skillsForm");
+skillsForm.addEventListener("submit", function(event) {
+  event.preventDefault();
+  var skillsInput = document.getElementById("skillsInput").value;
+  console.log("Skills: ", skillsInput);
+  // Perform further processing or submit the form data
+  modal.style.display = "none";
+});
+
+</script>
+
+
+
+  </head>
+
+  <body>
+    <div class="project-name">
+      <h1>Resume Parser</h1>
+      {% comment %} <button onclick="addSkills()">Add required Skills</button> {% endcomment %}
+
+      {% comment %} <button id="openModalBtn">Open Modal</button> {% endcomment %}
+
+      <div id="modal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Enter Skills</h2>
+          <form id="skillsForm">
+            <label for="skillsInput">Skills:</label>
+            <input type="text" id="skillsInput" name="skillsInput" required>
+            <button type="submit">Submit</button>
+          </form>
+        </div>
+      </div>
+      
+
+
+    </div>
+    <div class="side-panel">
+      <a href="/">Top applicants</a>
+      <a href="/all">All applications</a>
+      <a href="/rejected">Rejected Applications</a>
+    </div>
+
+    <div class="main">
+      <table>
+
+        <thead>
+            <tr>
+                {% comment %} <th style="width:100px">Row ID</th>
+                <th style="width:200px">Name</th>
+                <th style="width:500px">Designation</th>
+                <th style="width:500px">test column</th> {% endcomment %}
+
+
+
+            {% for key in labels %}
+                  <th>{{ key }}</th>
+                {% endfor %} 
+              </tr>
+        </thead>
+
+        <tbody>
+          {% for row_key, row_dict in data.items %}
+          <tr>
+            <td>{{ row_key }}</td>
+            {% for column_key, value in row_dict.items %}
+            <td>{{ value }}</td>
+            {% endfor %}
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+
+      {% comment %} {{data_table |safe}} {% endcomment %}
+    </div>
+  </body>
+</html>
